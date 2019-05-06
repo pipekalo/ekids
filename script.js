@@ -25,4 +25,8 @@
     allTasks = document.getElementById("js-all-tasks"),
     doneTasks = document.getElementById("js-done-tasks"),
     addNewTaskField = document.getElementById("app__task-new");
-})
+
+    function doId(){
+        //метод "заглушка" для написания функции
+    }
+})();
