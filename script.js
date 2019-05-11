@@ -35,4 +35,5 @@
     function removeTasks(el){}
     function createTasks(el){}
     function doneTasks(el){}
-})
+})();
+
