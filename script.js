@@ -25,4 +25,14 @@
     allTasks = document.getElementById("js-all-tasks"),
     doneTasks = document.getElementById("js-done-tasks"),
     addNewTaskField = document.getElementById("app__task-new");
+
+    function doId(){
+        return Math.random().toString(36).substr(2,16);
+    }
+
+    function INIT(){}
+    function addTasks(el){}
+    function removeTasks(el){}
+    function createTasks(el){}
+    function doneTasks(el){}
 })
