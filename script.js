@@ -30,10 +30,22 @@
         return Math.random().toString(36).substr(2,16);
     }
 
-    function INIT(){}
+    function INIT(){
+        for(const item of tasks.current){
+            createItem(item);
+        }
+        for(const item of tasks.done){
+            createItem(item);
+        }
+        allTasks.innerHTML = tasks.allTasks;
+        doneTasks.innerHTML = tasks.doneTasks;
+    }
+
+    INIT();
+
     function addTasks(el){}
     function removeTasks(el){}
-    function createTasks(el){}
+    function createItem(el){}
     function doneTasks(el){}
 })();
 
