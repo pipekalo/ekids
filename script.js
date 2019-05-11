@@ -6,12 +6,12 @@
             taskState: "current"
         },{
             taskId: doId(),
-            taskContent: "Task 1",
+            taskContent: "Task 2",
             taskState: "current"
         }],
         done:[{
             taskId: doId(),
-            taskContent: "Task 1",
+            taskContent: "Task 3",
             taskState: "current"
         }],
         get allTasks(){
