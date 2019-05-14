@@ -43,9 +43,73 @@
 
     INIT();
 
-    function addTasks(el){}
-    function removeTasks(el){}
-    function createItem(el){}
-    function doneTasks(el){}
+
+    function createItem(el) {
+        let item = document.createElement('li'),
+            remove = document.createElement('div'),
+            text = document.createElement('span');
+        remove.classList.add('app__list-remove');
+        remove.addEventListener('click', function () {
+            removeTask(this);
+        });
+        text.classList.add('app__list-text');
+        text.addEventListener('click', function () {
+            doneTask(this);
+        });
+        switch (el.taskState) {
+            case 'done':
+                item.classList.add('app__list-item', 'app__list-item--done');
+                break;
+            default:
+                item.classList.add('app__list-item');
+        }
+        item.id = el.taskId;
+        text.innerHTML = el.taskContent;
+        item.appendChild(text);
+        item.appendChild(remove);
+        tasksList.appendChild(item);
+    }
+
+    function doneTask(el) {
+        
+    }
+
+    function removeTask(el) {
+        let removeEl = el.parentNode,
+            removeElId = removeEl.id,
+            removeElState = removeEl.classList.contains('app__list-item--done');
+
+        removeEl.remove();
+        const items = removeElState ? tasks.done : tasks.current;
+        for (const [index, item] of items.entries()) {
+            if (item.taskId !== removeElId) continue;
+            items.splice(index, 1);
+        }
+        allTasks.innerHTML = tasks.allTasks;
+        doneTasks.innerHTML = tasks.doneTasks;
+    }
+
+    function addTasks(str) {
+        let elem = {
+            taskId: doId(),
+            taskContent: str,
+            taskState: "current"
+        };
+        tasks.current.push(elem);
+        createItem(elem);
+        allTasks.innerHTML = tasks.allTasks;
+    }
+
+    function doId() {
+        return Math.random().toString(36).substr(2, 16);
+    }
+
+    addNewTaskField.addEventListener('keyup',function (e) {
+        if(e.keyCode === 13) {
+            addTasks(this.value);
+            this.value = "";
+        }
+    })
+    
 })();
 
